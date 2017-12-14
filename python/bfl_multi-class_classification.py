@@ -50,7 +50,8 @@ CLASSIFIER_ACTIVATION = 'relu'
 CLASSIFIER_BIAS = False
 # CLASSIFIER_OPTIMIZER = 'adam'
 CLASSIFIER_OPTIMIZER = 'adagrad'
-CLASSIFIER_LOSS = 'categorical_crossentropy'
+# CLASSIFIER_LOSS = 'categorical_crossentropy'
+CLASSIFIER_LOSS = 'binary_crossentropy'
 #------------------------------------------------------------------------
 # input files
 #------------------------------------------------------------------------
@@ -82,7 +83,7 @@ if __name__ == "__main__":
         "-E",
         "--epochs",
         help="number of epochs; default is 20",
-        default=20,
+        default=10,
         type=int)
     parser.add_argument(
         "-B",
@@ -197,7 +198,7 @@ if __name__ == "__main__":
         model.compile(optimizer=SAE_OPTIMIZER, loss=SAE_LOSS)
 
         # train the model
-        model.fit(x_train, x_train, batch_size=batch_size, epochs=epochs, verbose=VERBOSE)
+        # model.fit(x_train, x_train, batch_size=batch_size, epochs=epochs, verbose=VERBOSE)
 
         # remove the decoder part
         num_to_remove = (len(sae_hidden_layers) + 1) // 2
@@ -215,6 +216,8 @@ if __name__ == "__main__":
     print("\nPart 2: buidling a complete model ...")
 
     # append a classifier to the model
+    model = Sequential()
+    model.add(Dense(sae_hidden_layers[0], input_dim=INPUT_DIM, activation=SAE_ACTIVATION, use_bias=SAE_BIAS))
     model.add(Dropout(dropout))
     for units in classifier_hidden_layers:
         model.add(Dense(units, activation=CLASSIFIER_ACTIVATION, use_bias=CLASSIFIER_BIAS))
