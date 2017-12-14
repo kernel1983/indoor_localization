@@ -29,7 +29,7 @@
 ### Example
 
 * classifier_hidden_layers
-* From   128,256,512 To        256,512,1024
+* From 128,256,512 to 256,512,1024
 * From 60% to 66%
 
 ## Touch the code
@@ -43,11 +43,15 @@
 
 ### Remove SAE
 
+![Remove SAE1](remove_sae1.png)
+
+![Remove SAE1](remove_sae2.png)
+
 ### About the fundamental problem
 
 ### Remove Location
 
-### Remove BUILDING ID and FLOOR
+### Remove BUILDING ID  and FLOOR
 
 From the previous two tests It’s showing that Location is the BOTTLE NECK
 
