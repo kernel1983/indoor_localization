@@ -49,17 +49,37 @@
 
 ### About the fundamental problem
 
+* Forget about the source code, what’s the original problem
+* Input of 520 RSSI of APs
+* Classification of Building Floor and Location(Space ID and Relative Position) combination
+
+![fundamental problem](fundamental.png)
+
 ### Remove Location
+
+![remove_location](remove_location.png)
+
+![remove_location_before](remove_location_before.png)
+
 
 ### Remove BUILDING ID  and FLOOR
 
+* This is a Guess
+* Location = Space ID + Relative Location
+* What if the Space ID means “Room ID”
+* Room ID should imply the BUILDING ID and FLOOR
+
 From the previous two tests It’s showing that Location is the BOTTLE NECK
+
+![remove_building_floor](remove_building_floor.png)
 
 ## Loss function
 
 * As all digital parameters were changed
 * Loss function remains
 * https://keras.io/losses/
+
+![best_result](best_result.png)
 
 ## Conclusion
 
